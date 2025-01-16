@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodinný spolek Duháček, z.s.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: relative;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 20px 0;
+        }
+        header img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, pink, cyan);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        header .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 100px;
+        }
+        nav {
+            background-color: #f0f0f0;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        section h2 {
+            font-size: 2em;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        footer {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rodinný spolek Duháček, z.s.</h1>
+        <img src="hernicka.jpg" alt="Fotografie herničky">
+        <img class="logo" src="logo.png" alt="Logo stránky">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#o-nas">O nás</a></li>
+            <li><a href="#odkazy">Odkazy</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+    <section id="o-nas">
+        <h2>O nás</h2>
+        <p>Na začátku stály dvě maminky Lucka a Denisa, které cítily nedostatek společenského a sousedského života v obci, kde obě žijí. Zejména jim chybělo místo, kde by se mohly poznávat děti a jejich rodiče v době rodičovských dovolených. A tak se zrodil Duháček respektive Rodinný spolek Duháček, z.s. jako základna pro obecní, komunitní a společenské dění ve Staré Vsi u Bílovce. To bylo v roce 2023.</p>
+        <p>Ve spolupráci s městem Bílovec, osadním výborem Staré Vsi a všemi ochotnými sousedy a kamarády se jim podařilo v osadním výboru vybudovat zázemí dětské herničky, organizovat akce v průběhu celého roku a to nejen pro děti, zajistit několik volnočasových kroužků, pořádat besedy i menší přátelská setkání.</p>
+        <p>Z participativního rozpočtu města bylo vybudované malé dětské hřiště a okolí osadního výboru a herničky se snažíme pořád rozvíjet a zlepšovat. Rádi vás kdykoli mezi sebou přivítáme, budeme se na vás těšit. Pro aktuální informace sledujte naše FB stránky a Instagram.</p>
+    </section>
+    <section id="odkazy">
+        <h2>Odkazy</h2>
+        <p><a href="https://www.facebook.com/profile.php?id=61550945709584&locale=cs_CZ">Facebook</a></p>
+        <p><a href="https://www.instagram.com/detskyklubduhacek/?fbclid=IwY2xjawH16txleHRuA2FlbQIxMAABHZM77FMpaISOh5W_dRzjyl6eEPvrHmEslDtF_gL5CLVrOeBUWqKVs6NzkA_aem_gNonikD06g44P0jPtyOLOQ">Instagram</a></p>
+    </section>
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Email: dkduhacek@gmail.com</p>
+        <p>Předseda spolku: Denisa Peřinová</p>
+        <p>Telefon: +420 773 166 379</p>
+        <p>Adresa spolku: Stará Ves 187, Bílovec</p>
+        <p>Adresa osadního výboru a herničky: Stará Ves 158, Bílovec</p>
+        <p>IČO: 19872437</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Rodinný spolek Duháček, z.s.</p>
+    </footer>
+</body>
+</html>
