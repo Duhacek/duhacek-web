@@ -77,8 +77,8 @@
 <body>
     <header>
         <h1>Rodinný spolek Duháček, z.s.</h1>
-        <img src="hernicka.jpg" alt="Fotografie herničky">
-        <img class="logo" src="logo.png" alt="Logo stránky">
+        <img src="herna.jpg" alt="Fotografie herničky">
+        <img class="logo" src="logo.jpg" alt="Logo stránky">
     </header>
     <nav>
         <ul>
