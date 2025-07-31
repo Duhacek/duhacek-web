@@ -2,10 +2,26 @@
 <html lang="cs">
 <head>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rodinný spolek Duháček, z.s.</title>
+
     <style>
+        * {
+            user-select: none;
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
             font-family: Arial, sans-serif;
             background-color: white;
@@ -15,13 +31,35 @@
         header {
             position: relative;
             text-align: center;
-            background-color: #f9f9f9;
-            padding: 20px 0;
+
+            width: 98%;
+            margin: 0 auto;
+            margin-top: 20px;
+
+            z-index: 5;
+
+            background: white;
         }
+
+        header .images{
+            position: relative;
+        }
+
         header img {
             width: 100%;
             max-height: 300px;
             object-fit: cover;
+            border-radius: 11px;
+
+            margin-top: 5px;
+        }
+
+        header .images .logo {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 100px;
+            border-radius: 10px;
         }
         header h1 {
             font-size: 2.5em;
@@ -30,85 +68,263 @@
             -webkit-text-fill-color: transparent;
             margin: 0;
         }
-        header .logo {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 100px;
+
+        header nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #dbdbdb, white, #dbdbdb);
+            height: 40px;
+
+            border-radius: 10px;
         }
-        nav {
-            background-color: #f0f0f0;
-            padding: 10px 0;
+
+        header nav div{
+            display: flex;
+            gap: 40px;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
+
+        header nav div span a {
             text-decoration: none;
             color: #333;
             font-weight: bold;
+            font-size: 1.3em;
         }
         section {
             padding: 20px;
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.6;
+            font-size: 1em;
         }
+
         section h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        section h2.nadpis {
+            font-size: 2em;
+            background: linear-gradient(to right, red, orange, yellow);
+            -webkit-background-clip: text;
+
+            text-align: center;
+            margin: 10px;
+        }
+
+        section.none{
+            display: none;
+        }
+
+        section#krouzky {
+            cursor: pointer;
+            position: relative;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            z-index: 0;
+        }
+
+        section#krouzky::before {
+            content: "";
+            position: fixed;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 500px;
+            background: url('./img/krouzky.png') center/contain no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        section#krouzky div.krouzek{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            margin-bottom: 20px;
+
+            transition: all 0.25s linear;
+        }
+
+        section#krouzky .krouzek:hover{
+            background-color: #4e4e4e;
+            opacity: 0.6;
+            border-radius: 5px;
+        }
+
+        section#krouzky .images {
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow-x: scroll;
+            overflow-y: hidden;
+
+            margin-bottom: 10px;
+        }
+
+        section#krouzky .images::-webkit-scrollbar {
+            background: transparent;
+            height: 30px;
+        }
+
+        section#krouzky .images img{
+            height: 250px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        section#krouzky .images .addition{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+        }
+
+        section#krouzky .arrows{
+            position: absolute;
+            top: 330px;
+            width: 95%;
+            margin-left: 2.5%;
+            display: flex;
+            justify-content: space-between;
+            z-index: -1;
+
+        }
+
+        section#krouzky .images .addition span{
+            position: absolute;
+            font-size: 30px;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.25s linear;
+        }
+
+        .krouzek.open .accordion-content {
+            max-height: 500px;
+        }
+
+
         footer {
             text-align: center;
-            background-color: #f9f9f9;
+            background: linear-gradient(to right, #dbdbdb, white);
             padding: 10px 0;
             margin-top: 20px;
         }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            padding: 10px 15px;
+            font-size: 16px;
+            display: block;
+            z-index: 2;
+            cursor: pointer;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            opacity: 0.7;
+            color: black;
+            font-size: 40px;
+            border-radius: 20px;
+            border: none;
+        }
+
+       @media (max-width: 450px) {
+
+            header nav{
+                height: auto;
+            }
+
+            header nav div{
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            header nav div span:first-child{
+                margin-top: 10px;
+            }
+
+            header nav div span:last-child{
+                margin-bottom: 10px;
+            }
+        }
+        
+        .seznam-predskolacek {
+            list-style: none; /* zruší výchozí odrážky */
+            padding-left: 1em; /* odsazení seznamu */
+        }
+
+        .seznam-predskolacek li::before {
+            content: "-";
+            margin-right: 0.5em;
+        }
+
+        .base-image-wrapper{
+            height: 250px;
+            border-radius: 5px;
+            overflow: clip;
+        }
+
+        .base-image-wrapper .base-image{
+            filter: blur(10px) brightness(1.5);
+        }
+
+
+
     </style>
 </head>
 <body>
+    <button id="scrollToTopBtn"><i class="fa-solid fa-arrow-up"></i></button>
+
     <header>
         <h1>Rodinný spolek Duháček, z.s.</h1>
-        <img src="herna.jpg" alt="Fotografie herničky">
-        <img class="logo" src="logo.jpg" alt="Logo stránky">
+        <div class="images">
+            <img src="./img/herna.jpg" alt="Fotografie herničky">
+            <img class="logo" src="./img/logo.jpg" alt="Logo stránky">
+        </div>
+        <nav>
+            <div>
+                <span onclick="activities()"><a href="#o-nas">O nás</a></span>
+                <span onclick="activities()"><a href="#odkazy">Odkazy</a></span>
+                <span onclick="activities()"><a href="#kontakt">Kontakt</a></span>
+                <span style="cursor: pointer;"
+                    onclick="activities(true)"
+                ><a>Kroužky</a></span>
+            </div>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#o-nas">O nás</a></li>
-            <li><a href="#odkazy">Odkazy</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-    </nav>
+
     <section id="o-nas">
         <h2>O nás</h2>
         <p>Na začátku stály dvě maminky Lucka a Denisa, které cítily nedostatek společenského a sousedského života v obci, kde obě žijí. Zejména jim chybělo místo, kde by se mohli poznávat děti a jejich rodiče v době rodičovských dovolených. A tak se zrodil Duháček respektive Rodinný spolek Duháček, z.s. jako základna pro obecní, komunitní a společenské dění ve Staré Vsi u Bílovce. To bylo v roce 2023.</p>
         <p>Ve spolupráci s městem Bílovec, osadním výborem Staré Vsi a všemi ochotnými sousedy a kamarády se jim podařilo v osadním výboru vybudovat zázemí dětské herničky, organizovat akce v průběhu celého roku a to nejen pro děti, zajistit několik volnočasových kroužků, pořádat besedy i menší přátelská setkání.</p>
-        <p>Z participativního rozpočtu města bylo vybudované malé dětské hřiště a okolí osadního výboru a herničky se snaží pořád rozvíjet a zlepšovat. 
-            K Lucce a Denise se postupně přidávají další lidé, kteří se stejně jako ony, snaží v obci rozvíjet komunitní život kolem Duháčku. Stále vznikají nové akce, kroužky a různé nápady a přání se stávají skutečností. Rádi vás kdykoli mezi sebou přivítáme a budeme se na vás těšit. 
-          
-            <p>Pokud chcete přidat do našeho spolku nového člena,  pak nám napište o přihlášku do spolku pro nové nezapsané členy. Tu vyplníte a pošlete/donesete zpět.  Za každého člena se platí roční členský příspěvek 100 Kč. </p>
+        <p>Z participativního rozpočtu města bylo vybudované malé dětské hřiště a okolí osadního výboru a herničky se snaží pořád rozvíjet a zlepšovat. K Lucce a Denise se postupně přidávají další lidé, kteří se stejně jako ony, snaží v obci rozvíjet komunitní život kolem Duháčku. Stále vznikají nové akce, kroužky a různé nápady a přání se stávají skutečností. Rádi vás kdykoli mezi sebou přivítáme a budeme se na vás těšit.
+        <p>Pokud chcete přidat do našeho spolku nového člena,  pak nám napište o přihlášku do spolku pro nové nezapsané členy. Tu vyplníte a pošlete/donesete zpět.  Za každého člena se platí roční členský příspěvek 100 Kč. </p>
         <p>Pokud nám chcete přispět jednorázově, použijte prosím naše bankovní spojení</p>
 
-<p> BÚ: 5490556003/5500</p>
-<p>Poznámka např.: roční členský příspěvek Novákovi 4x, Stará Ves 187
-Pokud chcete poslat finanční dar, pak prosím do poznámky uveďte např.: finanční dar Duháček Novotní
-     <p> Pro aktuální informace sledujte naše FB stránky a Instagram.</p>
+        <p> BÚ: 5490556003/5500</p>
+        <p>Poznámka např.: roční členský příspěvek Novákovi 4x, Stará Ves 187
+            Pokud chcete poslat finanční dar, pak prosím do poznámky uveďte např.: finanční dar Duháček Novotní
+          <p> Pro aktuální informace sledujte naše FB stránky a Instagram.</p>
         </p>
     </section>
+
     <section id="odkazy">
         <h2>Odkazy</h2>
         <p><a href="https://www.facebook.com/profile.php?id=61550945709584&locale=cs_CZ">Facebook</a></p>
         <p><a href="https://www.instagram.com/detskyklubduhacek/?fbclid=IwY2xjawH16txleHRuA2FlbQIxMAABHZM77FMpaISOh5W_dRzjyl6eEPvrHmEslDtF_gL5CLVrOeBUWqKVs6NzkA_aem_gNonikD06g44P0jPtyOLOQ">Instagram</a></p>
     </section>
+
     <section id="kontakt">
         <h2>Kontakt</h2>
         <p>Email: dkduhacek@gmail.com</p>
@@ -119,8 +335,244 @@ Pokud chcete poslat finanční dar, pak prosím do poznámky uveďte např.: fin
         <p>IČO: 19872437</p>
         <p>BÚ: 5490556003/5500</p>
     </section>
+
+    <section id="krouzky" class="none">
+        <div class="krouzek">
+            <h2 class="nadpis" >Duháčci z paloučku</h2>
+
+            <div class="images">
+                <img src="./img/galerie/krouzky/paloucek/paloucek-1.jpeg" alt="">
+                <img src="./img/galerie/krouzky/paloucek/paloucek-2.jpeg" alt="">
+                <img src="./img/galerie/krouzky/paloucek/paloucek-3.jpeg" alt="">
+                <img src="./img/galerie/krouzky/paloucek/paloucek-4.jpeg" alt="">
+                <img src="./img/galerie/krouzky/paloucek/paloucek-5.jpeg" alt="">
+            </div>
+
+            <div class="arrows">
+                    <span><i class="fa-solid fa-arrow-left"></i></span>
+                    <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="accordion-content">
+                <p>
+                    (dříve Duháčkův klubík pro nejmenší) venkovní kroužek pro děti od&nbsp;(1,5)&nbsp;2 do&nbsp;4 let.
+                </p>
+                <p>
+                    Kroužek je&nbsp;určen pro nejmenší děti a&nbsp;jejich blízké, scházíme&nbsp;se venku téměř za&nbsp;každého počasí, nejdůležitější je&nbsp;pro nás pohoda, bezpečí a&nbsp;radost z&nbsp;objevování. Společně zpíváme, hrajeme&nbsp;si, tvoříme, zkoumáme přírodu a&nbsp;přirozeně rozvíjíme řeč, jemnou i&nbsp;hrubou motoriku, vnímání, pozornost i&nbsp;vztahy mezi dětmi. Každé dítě si&nbsp;může zapojení přizpůsobit podle nálady a&nbsp;temperamentu&nbsp;–&nbsp;někdy pozoruje z&nbsp;klína, jindy se&nbsp;s&nbsp;chutí zapojí naplno.
+                </p>
+                <p>
+                    Těšit se&nbsp;na&nbsp;vás bude Adél - maminka tří malých draků a&nbsp;speciální pedagožka.
+                </p>
+                <p>
+                    Kroužek bude probíhat každý pátek v&nbsp;dopoledních hodinách, přesný čas a&nbsp;další informace budou upřesněny v&nbsp;průběhu srpna. 
+                </p>
+            </div>
+        </div>
+
+        <div class="krouzek">
+            <h2 class="nadpis" >Předškoláčkem s Duháčkem</h2>
+
+            <div class="images">
+                <div class="addition">
+                    <span style="left: 40px; top: 10px;"><i class="fa-solid fa-puzzle-piece"></i></span>
+                    <span style="left: 100px; top: 120px;"><i class="fa-solid fa-scissors"></i></span>
+                    <span style="left: 140px; top: 30px;"><i class="fa-solid fa-pen-ruler"></i></span>
+                    <span style="left: 180px; top: 140px;"><i class="fa-solid fa-puzzle-piece"></i></span>
+                    <span style="left: 220px; top: 50px;"><i class="fa-solid fa-a"></i></span>
+                    <span style="left: 240px; top: 160px;"><i class="fa-solid fa-b"></i></span>
+                    <span style="left: 280px; top: 70px;"><i class="fa-solid fa-c"></i></span>
+                    <span style="left: 370px; top: 180px;"><i class="fa-solid fa-d"></i></span>
+                    <span style="left: 400px; top: 90px;"><i class="fa-solid fa-e"></i></span>
+                    <span style="left: 450px; top: 140px;"><i class="fa-solid fa-f"></i></span>
+                    <span style="left: 500px; top: 50px;"><i class="fa-solid fa-g"></i></span>
+                    <span style="left: 550px; top: 160px;"><i class="fa-solid fa-h"></i></span>
+                </div>
+
+                <div class="base-image-wrapper">
+                    <img class="base-image" src="./img/galerie/krouzky/predskolacek/predskolacek-0.jpg" alt="">
+                </div>
+                
+                <div class="base-image-wrapper">
+                    <img class="base-image" src="./img/galerie/krouzky/predskolacek/predskolacek-0.jpg" alt="">
+                </div>
+                
+                <div class="base-image-wrapper">
+                    <img class="base-image" src="./img/galerie/krouzky/predskolacek/predskolacek-0.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="arrows">
+                <span><i class="fa-solid fa-arrow-left"></i></span>
+                <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="accordion-content">
+                    <p>Máte doma předškoláčka a chcete mu pomoci s přípravou na školu?</p>
+                    <p>V našem kroužku děti rozvíjejí:</p>
+                    <ul class="seznam-predskolacek">
+                        <li>
+                            řeč s&nbsp;podporou Elkoninovy metody&nbsp;-&nbsp;díky této metodě se&nbsp;u&nbsp;dítěte budují základy pro čtení a&nbsp;psaní&nbsp;&#8209&nbsp;učí&nbsp;se&nbsp;rozpoznat první hlásku ve&nbsp;slově, tleskat slabiky, rozložit slovo na&nbsp;jednotlivé hlásky nebo ho&nbsp;naopak ze&nbsp;slyšených hlásek složit. Díky tomu lépe vnímá, jak slova “fungují”, jazyk pro něj přestává být jen zvukem&nbsp;&#8209&nbsp;stává se&nbsp;z&nbsp;něj stavebnice, se&nbsp;kterou si&nbsp;umí poradit,
+                        </li>
+                        <li>
+                            sluchové vnímání,
+                        </li>
+                        <li>
+                            zrakové vnímání,
+                        </li>
+                        <li>
+                            grafomotoriku,
+                        </li>
+                        <li>
+                            motoriku 
+                        </li>
+                        <li>
+                            a&nbsp;další důležité dovednosti.
+                        </li>
+                    </ul>
+                    <p>
+                        Vše probíhá hravě, s&nbsp;radostí a&nbsp;je&nbsp;přizpůsobeno individuálním potřebám každého dítěte. Společně tak budujeme pevné základy pro úspěšný start do&nbsp;školního života.
+                    </p>
+                    <p>
+                        To vše vedeno speciální pedagožkou Adél.
+                    </p>
+                    <p>
+                         Den a&nbsp;čas kroužku a&nbsp;další bližší informace budou zveřejněny v&nbsp;průběhu srpna. 
+                    </p>
+            </div>
+        </div>
+
+        <div class="krouzek">
+            <h2 class="nadpis" >Muzikohrátky s batolátky</h2>
+
+            <div class="images">
+                <img src="./img/galerie/krouzky/muzikohratky/muzikohratky-1.jpeg" alt="">
+                <img src="./img/galerie/krouzky/muzikohratky/muzikohratky-2.jpeg" alt="">
+                <img src="./img/galerie/krouzky/muzikohratky/muzikohratky-3.jpeg" alt="">
+            </div>
+
+            <div class="arrows">
+                    <span><i class="fa-solid fa-arrow-left"></i></span>
+                    <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="accordion-content">
+                    <p>
+                        Kroužek pro všechny malé hudebníky v&nbsp;doprovodu rodičů nebo prarodičů. 
+                    </p>
+                    <p>
+                        Na&nbsp;různé podněty si&nbsp;zazpíváme písničky, se&nbsp;kterými budeme pracovat: vytleskat rytmus ručkami, na&nbsp;tělo, na&nbsp;různé předměty, na&nbsp;Orffovy dětské hudební nástroje, Boom hackery. Také zapojíme pohybové kreace a&nbsp;tanečky, cvičení do&nbsp;rytmu hudby a&nbsp;pohybové aktivity.
+                    </p>
+                    <p>
+                        Témata budou Lidové písničky, jako&nbsp;Travička zelená; V&nbsp;zahradě na&nbsp;hrušce sedává kos; Kočka leze dírou; Kočka leze dolů; Skákal pes; Vyletěla holubička ze&nbsp;skály; Tra&nbsp;la&nbsp;la&nbsp;červená fiala a&nbsp;spousta jiných a&nbsp;také i&nbsp;písně umělé, např.&nbsp;Sluníčko sluníčko; Rozvíjej se&nbsp;poupátko, sloník Toník, Zvířecí písnička (Béba), písně z&nbsp;pohádek..... A&nbsp;spousty dalších. 
+                    </p>
+                    <p>
+                        I tento rok se&nbsp;na&nbsp;děti těší Zdeněk.
+                    </p>
+                    <p>
+                        Den a&nbsp;čas kroužku a&nbsp;další bližší informace budou zveřejněny v&nbsp;průběhu srpna. 
+                    </p>
+            </div>
+        </div>
+
+        <div class="krouzek">
+            <h2 class="nadpis" >Hurá do přírody s Duháčkem</h2>
+
+            <div class="images">
+                <img src="./img/galerie/krouzky/priroda/priroda-1.jpeg" alt="">
+                <img src="./img/galerie/krouzky/priroda/priroda-2.jpeg" alt="">
+                <img src="./img/galerie/krouzky/priroda/priroda-3.jpeg" alt="">
+                <img src="./img/galerie/krouzky/priroda/priroda-4.jpeg" alt="">
+             </div>
+
+            <div class="arrows">
+                    <span><i class="fa-solid fa-arrow-left"></i></span>
+                    <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="accordion-content">
+                    <p>
+                        Chceš si&nbsp;zahrát hry v&nbsp;přírodě a&nbsp;dozvědět se&nbsp;něco ze&nbsp;světa zvířat? Tak neváhej a&nbsp;přijď k&nbsp;nám do&nbsp;Duháčku.
+                    </p> 
+                    <p>
+                        Kroužek pro všechny dobrodruhy od&nbsp;cca&nbsp;6-10&nbsp;let.
+
+                    </p>
+                    <p>
+                        Těšit se&nbsp;můžete na&nbsp;hry a&nbsp;výpravy do&nbsp;přírody, poznávání a&nbsp;zkoumání přírody kolem nás, tvoření, stezky, osvojení tábornických dovedností a&nbsp;další netradiční zážitky. 
+                    </p>
+                    <p>
+                        Tím vším vás bude provázet Venda, která má dlouholetou praxi na &nbsp;táborech a&nbsp;v&nbsp;dětském turistickém oddíle. 
+                    </p>
+                    <p>
+                        Den a&nbsp;čas kroužku a&nbsp;další bližší informace budou zveřejněny v&nbsp;průběhu srpna. 
+                    </p>
+            </div>
+        </div>
+
+    </section>
+
     <footer>
         <p>&copy; 2025 Rodinný spolek Duháček, z.s.</p>
     </footer>
+
+    <script>
+
+        const btn = document.getElementById('scrollToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+
+            btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const onas = document.querySelector('#o-nas');
+        const odkazy = document.querySelector('#odkazy');
+        const kontakt = document.querySelector('#kontakt');
+        const krouzky = document.querySelector('#krouzky');
+
+        const sections = [onas, odkazy, kontakt];
+
+        function activities(hide = false){
+            if(hide){
+                for(const section of sections){
+                    section.classList.add('none');
+                }
+                krouzky.style.display = 'flex';
+            }else{
+                for(const section of sections){
+                    section.classList.remove('none');
+                }
+                krouzky.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('.krouzek').forEach(e => {
+            e.addEventListener('click', () => {
+                const content = e.querySelector('.accordion-content');
+
+                if (content.classList.contains('open')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    requestAnimationFrame(() => {
+                        content.style.maxHeight = '0';
+                    });
+                    content.classList.remove('open');
+                } else {
+                    content.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+
+
+        
+
+
+    </script>
 </body>
 </html>
